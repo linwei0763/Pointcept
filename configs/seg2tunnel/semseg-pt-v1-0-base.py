@@ -1,6 +1,7 @@
 _base_ = ["../_base_/default_runtime.py"]
 # misc custom setting
 batch_size = 8  # bs: total bs in all gpus
+num_worker = 32
 mix_prob = 0.8
 empty_cache = False
 enable_amp = True
@@ -18,7 +19,7 @@ model = dict(
 
 
 # scheduler settings
-epoch = 3000
+epoch = 12000
 optimizer = dict(type="AdamW", lr=0.006, weight_decay=0.05)
 scheduler = dict(type="MultiStepLR", milestones=[0.6, 0.8], gamma=0.1)
 
