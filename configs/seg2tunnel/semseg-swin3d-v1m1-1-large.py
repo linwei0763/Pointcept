@@ -1,10 +1,10 @@
 _base_ = ["../_base_/default_runtime.py"]
 # misc custom setting
-batch_size = 8  # bs: total bs in all gpus
+batch_size = 4  # bs: total bs in all gpus
 num_worker = 32
 mix_prob = 0.8
 empty_cache = False
-enable_amp = True
+enable_amp = False
 
 # model settings
 model = dict(
@@ -35,14 +35,7 @@ model = dict(
 # scheduler settings
 epoch = 4000
 optimizer = dict(type="AdamW", lr=0.001, weight_decay=0.05)
-scheduler = dict(
-    type="OneCycleLR",
-    max_lr=[0.001, 0.0001],
-    pct_start=0.05,
-    anneal_strategy="cos",
-    div_factor=10.0,
-    final_div_factor=1000.0,
-)
+scheduler = dict(type="MultiStepLR", milestones=[0.6, 0.8], gamma=0.1)
 param_dicts = [dict(keyword="blocks", lr=0.0001)]
 
 # dataset settings
