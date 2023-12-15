@@ -10,6 +10,8 @@ module load cuda/11.8
 
 module load cudnn/8.9_cuda-11.8
 
+module load gcc/8
+
 cd Pointcept
 
 conda install ninja -y

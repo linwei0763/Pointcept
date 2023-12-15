@@ -19,7 +19,7 @@ model = dict(
 
 
 # scheduler settings
-epoch = 12000
+epoch = 4000
 optimizer = dict(type="AdamW", lr=0.006, weight_decay=0.05)
 scheduler = dict(type="MultiStepLR", milestones=[0.6, 0.8], gamma=0.1)
 
@@ -47,7 +47,7 @@ data = dict(
             # dict(type="CenterShift", apply_z=True),
             # dict(type="RandomDropout", dropout_ratio=0.2, dropout_application_ratio=0.2),
             # dict(type="RandomRotateTargetAngle", angle=(1/2, 1, 3/2), center=[0, 0, 0], axis="z", p=0.75),
-            # dict(type="RandomRotate", angle=[-1, 1], axis="z", center=[0, 0, 0], p=0.5),
+            dict(type="RandomRotate", angle=[-1, 1], axis="z", center=[0, 0, 0], p=0.5),
             # dict(type="RandomRotate", angle=[-1 / 64, 1 / 64], axis="x", p=0.5),
             # dict(type="RandomRotate", angle=[-1 / 64, 1 / 64], axis="y", p=0.5),
             # dict(type="RandomScale", scale=[0.9, 1.1]),
@@ -71,7 +71,7 @@ data = dict(
             dict(type="SphereCrop", point_max=204800, mode="random"),
             # dict(type="CenterShift", apply_z=False),
             dict(type="NormalizeColor"),
-            # dict(type="ShufflePoint"),
+            dict(type="ShufflePoint"),
             dict(type="ToTensor"),
             dict(
                 type="Collect",
@@ -161,5 +161,6 @@ data = dict(
                 ],
             ],
         ),
+
     ),
 )
