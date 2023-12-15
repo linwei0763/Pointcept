@@ -36,6 +36,18 @@ cd ../..
 
 pip install open3d
 
+pip install -U git+https://github.com/NVIDIA/MinkowskiEngine -v --no-deps --config-settings="--blas_include_dirs=${CONDA_PREFIX}/include" --config-settings="--blas=openblas"
+
+cd libs
+
+git clone https://github.com/microsoft/Swin3D.git
+
+cd Swin3D
+
+pip install ./
+
+cd ../..
+
 # implement
 
 sintr -t 1:0:0 --exclusive -A SHEIL-SL3-GPU -p ampere
@@ -48,11 +60,11 @@ module load cudnn/8.9_cuda-11.8
 
 cd Pointcept
 
-python pointcept/datasets/preprocessing/seg2tunnel/preprocess_seg2tunnel.py --dataset_root ../Seg2Tunnel/seg2tunnel --output_root ../Seg2Tunnel/seg2tunnel_0.04_pointcept
+python pointcept/datasets/preprocessing/seg2tunnel/preprocess_seg2tunnel.py --dataset_root ../Seg2Tunnel/seg2tunnel --output_root ../Seg2Tunnel/seg2tunnel_pointcept_0.04
 
 mkdir data
 
-ln -s /rds/user/wl443/hpc-work/Seg2Tunnel/seg2tunnel_0.04_pointcept /rds/user/wl443/hpc-work/Pointcept/data/seg2tunnel
+ln -s /rds/user/wl443/hpc-work/Seg2Tunnel/seg2tunnel_pointcept_0.04 /rds/user/wl443/hpc-work/Pointcept/data/seg2tunnel
 
 export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}
 

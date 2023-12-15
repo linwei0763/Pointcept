@@ -1,5 +1,6 @@
 import argparse
 import numpy as np
+import open3d as o3d
 import os
 import pandas as pd
 import torch
@@ -87,7 +88,12 @@ def main_process():
         semantic_gt = pc[:, -1].reshape(-1, 1)
         semantic_gt = np.asarray(semantic_gt, dtype=int)
         
-        save_dict = dict(coord=coords, color=colors, semantic_gt=semantic_gt)
+        pcd = o3d.geometry.PointCloud()
+        pcd.points = o3d.utility.Vector3dVector(pc[:, 0:3])
+        pcd.estimate_normals(search_param=o3d.geometry.KDTreeSearchParamHybrid(100, 5))
+        normals = np.asarray(pcd.normals)
+        
+        save_dict = dict(coord=coords, color=colors, normal=normals, semantic_gt=semantic_gt)
         
         if station in training_stations:
             save_path = os.path.join(args.output_root, 'training_set', station + '.pth')
