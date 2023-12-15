@@ -56,9 +56,9 @@ ln -s /rds/user/wl443/hpc-work/Seg2Tunnel/seg2tunnel_0.04_pointcept /rds/user/wl
 
 export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}
 
-sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-pt-v1-0-base -n semseg-pt-v1-0-base
+sh scripts/train.sh -p python -g 2 -d seg2tunnel -c semseg-pt-v1-0-base -n semseg-pt-v1-0-base
 
-sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-pt-v1-0-base -n semseg-pt-v1-0-base -r true
+sh scripts/train.sh -p python -g 2 -d seg2tunnel -c semseg-pt-v1-0-base -n semseg-pt-v1-0-base -r true
 
 # 
 

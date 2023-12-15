@@ -1,3 +1,6 @@
+# spconv is too fast, data loading speed is bottleneck. Cache data is a better choice.
+
+
 _base_ = ["../_base_/default_runtime.py"]
 # misc custom setting
 batch_size = 8  # bs: total bs in all gpus
@@ -10,17 +13,20 @@ enable_amp = True
 model = dict(
     type="DefaultSegmentor",
     backbone=dict(
-        type="PointTransformer-Seg50",
+        type="SpUNet-v1m2",
         in_channels=6,
         num_classes=7,
+        channels=(32, 64, 128, 256, 256, 128, 96, 96),
+        layers=(2, 3, 4, 6, 2, 2, 2, 2),
+        bn_momentum=0.1,
     ),
     criteria=[dict(type="CrossEntropyLoss", loss_weight=1.0, ignore_index=-1)],
 )
 
 # scheduler settings
 epoch = 4000
-optimizer = dict(type="AdamW", lr=0.006, weight_decay=0.05)
-scheduler = dict(type="MultiStepLR", milestones=[0.6, 0.8], gamma=0.1)
+optimizer = dict(type="SGD", lr=0.1, momentum=0.9, weight_decay=0.0001, nesterov=True)
+scheduler = dict(type="PolyLR")
 
 # dataset settings
 dataset_type = "Seg2TunnelDataset"

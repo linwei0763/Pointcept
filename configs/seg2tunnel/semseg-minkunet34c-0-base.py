@@ -9,18 +9,14 @@ enable_amp = True
 # model settings
 model = dict(
     type="DefaultSegmentor",
-    backbone=dict(
-        type="PointTransformer-Seg50",
-        in_channels=6,
-        num_classes=7,
-    ),
+    backbone=dict(type="MinkUNet34C", in_channels=6, out_channels=7),
     criteria=[dict(type="CrossEntropyLoss", loss_weight=1.0, ignore_index=-1)],
 )
 
 # scheduler settings
 epoch = 4000
-optimizer = dict(type="AdamW", lr=0.006, weight_decay=0.05)
-scheduler = dict(type="MultiStepLR", milestones=[0.6, 0.8], gamma=0.1)
+optimizer = dict(type="SGD", lr=0.1, momentum=0.9, weight_decay=0.0001, nesterov=True)
+scheduler = dict(type="PolyLR")
 
 # dataset settings
 dataset_type = "Seg2TunnelDataset"
