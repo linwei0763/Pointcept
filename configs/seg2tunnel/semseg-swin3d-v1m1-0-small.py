@@ -1,10 +1,10 @@
 _base_ = ["../_base_/default_runtime.py"]
 # misc custom setting
 batch_size = 4  # bs: total bs in all gpus
-num_worker = 32
+num_worker = 64
 mix_prob = 0.8
 empty_cache = False
-enable_amp = True
+enable_amp = False
 
 # model settings
 model = dict(
@@ -27,7 +27,7 @@ model = dict(
         upsample="linear_attn",
         knn_down=True,
         cRSE="XYZ_RGB_NORM",
-        fp16_mode=1,
+        fp16_mode=0,
     ),
     criteria=[dict(type="CrossEntropyLoss", loss_weight=1.0, ignore_index=-1)],
 )

@@ -10,7 +10,7 @@
 
 #! sbatch directives begin here ###############################
 #! Name of the job:
-#SBATCH -J pointcept-semseg-minkunet34c-0-base
+#SBATCH -J pointcept-semseg-pt-v2m2-0-base
 #! Which project should be charged (NB Wilkes2 projects end in '-GPU'):
 #SBATCH -A SHEIL-SL3-GPU
 #! How many whole nodes should be allocated?
