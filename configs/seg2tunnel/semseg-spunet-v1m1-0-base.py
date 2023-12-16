@@ -12,7 +12,7 @@ model = dict(
     backbone=dict(
         type="SpUNet-v1m1",
         in_channels=6,
-        num_classes=13,
+        num_classes=7,
         channels=(32, 64, 128, 256, 256, 128, 96, 96),
         layers=(2, 3, 4, 6, 2, 2, 2, 2),
     ),
@@ -134,30 +134,30 @@ data = dict(
                     feat_keys=("coord", "color"),
                 ),
             ],
-            # aug_transform=[
-            #     [dict(type="RandomScale", scale=[0.9, 0.9])],
-            #     [dict(type="RandomScale", scale=[0.95, 0.95])],
-            #     [dict(type="RandomScale", scale=[1, 1])],
-            #     [dict(type="RandomScale", scale=[1.05, 1.05])],
-            #     [dict(type="RandomScale", scale=[1.1, 1.1])],
-            #     [
-            #         dict(type="RandomScale", scale=[0.9, 0.9]),
-            #         dict(type="RandomFlip", p=1),
-            #     ],
-            #     [
-            #         dict(type="RandomScale", scale=[0.95, 0.95]),
-            #         dict(type="RandomFlip", p=1),
-            #     ],
-            #     [dict(type="RandomScale", scale=[1, 1]), dict(type="RandomFlip", p=1)],
-            #     [
-            #         dict(type="RandomScale", scale=[1.05, 1.05]),
-            #         dict(type="RandomFlip", p=1),
-            #     ],
-            #     [
-            #         dict(type="RandomScale", scale=[1.1, 1.1]),
-            #         dict(type="RandomFlip", p=1),
-            #     ],
-            # ],
+            aug_transform=[
+                # [dict(type="RandomScale", scale=[0.9, 0.9])],
+                # [dict(type="RandomScale", scale=[0.95, 0.95])],
+                # [dict(type="RandomScale", scale=[1, 1])],
+                # [dict(type="RandomScale", scale=[1.05, 1.05])],
+                # [dict(type="RandomScale", scale=[1.1, 1.1])],
+                # [
+                #     dict(type="RandomScale", scale=[0.9, 0.9]),
+                #     dict(type="RandomFlip", p=1),
+                # ],
+                # [
+                #     dict(type="RandomScale", scale=[0.95, 0.95]),
+                #     dict(type="RandomFlip", p=1),
+                # ],
+                # [dict(type="RandomScale", scale=[1, 1]), dict(type="RandomFlip", p=1)],
+                # [
+                #     dict(type="RandomScale", scale=[1.05, 1.05]),
+                #     dict(type="RandomFlip", p=1),
+                # ],
+                # [
+                #     dict(type="RandomScale", scale=[1.1, 1.1]),
+                #     dict(type="RandomFlip", p=1),
+                # ],
+            ],
         ),
     ),
 )

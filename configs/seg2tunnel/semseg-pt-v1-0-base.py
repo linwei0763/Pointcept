@@ -114,12 +114,12 @@ data = dict(
         type=dataset_type,
         split="validation_set",
         data_root=data_root,
-        transform=[dict(type="CenterShift", apply_z=True), dict(type="NormalizeColor")],
+        transform=[dict(type="NormalizeColor"),],
         test_mode=True,
         test_cfg=dict(
             voxelize=dict(
                 type="GridSample",
-                grid_size=0.04,
+                grid_size=0.01,
                 hash_type="fnv",
                 mode="test",
                 keys=("coord", "color"),
@@ -127,7 +127,7 @@ data = dict(
             ),
             crop=None,
             post_transform=[
-                dict(type="CenterShift", apply_z=False),
+                # dict(type="CenterShift", apply_z=False),
                 dict(type="ToTensor"),
                 dict(
                     type="Collect",
@@ -136,28 +136,28 @@ data = dict(
                 ),
             ],
             aug_transform=[
-                [dict(type="RandomScale", scale=[0.9, 0.9])],
-                [dict(type="RandomScale", scale=[0.95, 0.95])],
-                [dict(type="RandomScale", scale=[1, 1])],
-                [dict(type="RandomScale", scale=[1.05, 1.05])],
-                [dict(type="RandomScale", scale=[1.1, 1.1])],
-                [
-                    dict(type="RandomScale", scale=[0.9, 0.9]),
-                    dict(type="RandomFlip", p=1),
-                ],
-                [
-                    dict(type="RandomScale", scale=[0.95, 0.95]),
-                    dict(type="RandomFlip", p=1),
-                ],
-                [dict(type="RandomScale", scale=[1, 1]), dict(type="RandomFlip", p=1)],
-                [
-                    dict(type="RandomScale", scale=[1.05, 1.05]),
-                    dict(type="RandomFlip", p=1),
-                ],
-                [
-                    dict(type="RandomScale", scale=[1.1, 1.1]),
-                    dict(type="RandomFlip", p=1),
-                ],
+                # [dict(type="RandomScale", scale=[0.9, 0.9])],
+                # [dict(type="RandomScale", scale=[0.95, 0.95])],
+                # [dict(type="RandomScale", scale=[1, 1])],
+                # [dict(type="RandomScale", scale=[1.05, 1.05])],
+                # [dict(type="RandomScale", scale=[1.1, 1.1])],
+                # [
+                #     dict(type="RandomScale", scale=[0.9, 0.9]),
+                #     dict(type="RandomFlip", p=1),
+                # ],
+                # [
+                #     dict(type="RandomScale", scale=[0.95, 0.95]),
+                #     dict(type="RandomFlip", p=1),
+                # ],
+                # [dict(type="RandomScale", scale=[1, 1]), dict(type="RandomFlip", p=1)],
+                # [
+                #     dict(type="RandomScale", scale=[1.05, 1.05]),
+                #     dict(type="RandomFlip", p=1),
+                # ],
+                # [
+                #     dict(type="RandomScale", scale=[1.1, 1.1]),
+                #     dict(type="RandomFlip", p=1),
+                # ],
             ],
         ),
 
