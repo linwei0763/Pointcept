@@ -62,10 +62,6 @@ cd Pointcept
 
 python pointcept/datasets/preprocessing/seg2tunnel/preprocess_seg2tunnel.py --dataset_root ../Seg2Tunnel/seg2tunnel --output_root ../Seg2Tunnel/seg2tunnel_pointcept_0.04
 
-mkdir data
-
-ln -s /rds/user/wl443/hpc-work/Seg2Tunnel/seg2tunnel_pointcept_0.04 /rds/user/wl443/hpc-work/Pointcept/data/seg2tunnel
-
 export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}
 
 sh scripts/train.sh -p python -g 2 -d seg2tunnel -c semseg-pt-v1-0-base -n semseg-pt-v1-0-base
