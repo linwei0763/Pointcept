@@ -33,14 +33,14 @@ model = dict(
 )
 
 # scheduler settings
-epoch = 4000
+epoch = 3000
 optimizer = dict(type="AdamW", lr=0.001, weight_decay=0.05)
 scheduler = dict(type="MultiStepLR", milestones=[0.6, 0.8], gamma=0.1)
 param_dicts = [dict(keyword="blocks", lr=0.0001)]
 
 # dataset settings
 dataset_type = "Seg2TunnelDataset"
-data_root = "data/seg2tunnel"
+data_root = "../Seg2Tunnel/seg2tunnel_pointcept_0.04"
 
 data = dict(
     num_classes=7,

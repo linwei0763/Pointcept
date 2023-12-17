@@ -121,6 +121,7 @@ def default_config_parser(file_path, options):
         cfg.seed = get_random_seed()
 
     cfg.data.train.loop = cfg.epoch // cfg.eval_epoch
+    cfg.data.val.loop = 100
 
     os.makedirs(os.path.join(cfg.save_path, "model"), exist_ok=True)
     if not cfg.resume:

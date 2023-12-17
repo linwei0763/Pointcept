@@ -1,6 +1,6 @@
 _base_ = ["../_base_/default_runtime.py"]
 # misc custom setting
-batch_size = 8  # bs: total bs in all gpus
+batch_size = 4  # bs: total bs in all gpus
 num_worker = 32
 mix_prob = 0.8
 empty_cache = False
@@ -18,13 +18,13 @@ model = dict(
 )
 
 # scheduler settings
-epoch = 4000
+epoch = 3000
 optimizer = dict(type="AdamW", lr=0.006, weight_decay=0.05)
 scheduler = dict(type="MultiStepLR", milestones=[0.6, 0.8], gamma=0.1)
 
 # dataset settings
 dataset_type = "Seg2TunnelDataset"
-data_root = "data/seg2tunnel"
+data_root = "../Seg2Tunnel/seg2tunnel_pointcept_0.04"
 
 data = dict(
     num_classes=7,

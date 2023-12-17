@@ -25,7 +25,7 @@ scheduler = dict(type="PolyLR")
 
 # dataset settings
 dataset_type = "S3DISDataset"
-data_root = "data/s3dis"
+data_root = "../Seg2Tunnel/seg2tunnel_pointcept_0.04/s3dis"
 
 data = dict(
     num_classes=13,
