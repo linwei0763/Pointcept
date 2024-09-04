@@ -1,6 +1,4 @@
-# installation
-
-HPC
+# HPC installation
 
 ```bash
 sintr -t 1:0:0 --exclusive -A SHEIL-SL3-GPU -p ampere
@@ -29,7 +27,7 @@ pip install ./
 cd ../..
 ```
 
-# usage
+# HPC usage
 
 ```bash
 sintr -t 1:0:0 --exclusive -A SHEIL-SL3-GPU -p ampere
@@ -39,8 +37,38 @@ module load cudnn/8.9_cuda-11.8
 cd Pointcept
 python pointcept/datasets/preprocessing/seg2tunnel/preprocess_seg2tunnel.py --dataset_root ../Seg2Tunnel/seg2tunnel --output_root ../Seg2Tunnel/seg2tunnel_pointcept_0.04
 export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}
-sh scripts/train.sh -p python -g 2 -d seg2tunnel -c semseg-pt-v1-0-base -n semseg-pt-v1-0-base
-sh scripts/train.sh -p python -g 2 -d seg2tunnel -c semseg-pt-v1-0-base -n semseg-pt-v1-0-base -r true
+sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-spunet-v1m1-0-base -n semseg-spunet-v1m1-0-base
+sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-spunet-v1m1-0-base -n semseg-spunet-v1m1-0-base -r true
+```
+
+# HPC installation
+
+```bash
+conda create -n pointcept python=3.8 -y
+conda activate pointcept
+cd Pointcept
+conda install ninja -y
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y
+conda install h5py pyyaml -c anaconda -y
+conda install sharedarray tensorboard tensorboardx yapf addict einops scipy plyfile termcolor timm -c conda-forge -y
+conda install pytorch-cluster pytorch-scatter pytorch-sparse -c pyg -y
+pip install torch-geometric
+pip install spconv-cu120
+cd libs/pointops
+TORCH_CUDA_ARCH_LIST="8.9" python setup.py install
+cd ../..
+pip install open3d
+```
+
+# HPC usage
+
+```bash
+conda activate pointcept
+cd Pointcept
+python pointcept/datasets/preprocessing/seg2tunnel/preprocess_seg2tunnel.py --dataset_root ../Seg2Tunnel/seg2tunnel --output_root ../Seg2Tunnel/seg2tunnel_pointcept_0.04
+export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}
+sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-spunet-v1m1-0-base -n semseg-spunet-v1m1-0-base
+sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-spunet-v1m1-0-base -n semseg-spunet-v1m1-0-base -r true
 ```
 
 # 
