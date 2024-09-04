@@ -2,7 +2,7 @@
 
 HPC
 
-'''bash
+```bash
 sintr -t 1:0:0 --exclusive -A SHEIL-SL3-GPU -p ampere
 conda create -n pointcept python=3.8 -y
 conda activate pointcept
@@ -27,11 +27,11 @@ git clone https://github.com/microsoft/Swin3D.git
 cd Swin3D
 pip install ./
 cd ../..
-'''
+```
 
 # usage
 
-'''bash
+```bash
 sintr -t 1:0:0 --exclusive -A SHEIL-SL3-GPU -p ampere
 conda activate pointcept
 module load cuda/11.8
@@ -41,7 +41,7 @@ python pointcept/datasets/preprocessing/seg2tunnel/preprocess_seg2tunnel.py --da
 export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}
 sh scripts/train.sh -p python -g 2 -d seg2tunnel -c semseg-pt-v1-0-base -n semseg-pt-v1-0-base
 sh scripts/train.sh -p python -g 2 -d seg2tunnel -c semseg-pt-v1-0-base -n semseg-pt-v1-0-base -r true
-'''
+```
 
 # 
 
