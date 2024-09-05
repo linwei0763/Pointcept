@@ -54,7 +54,6 @@ sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-spunet-v1m1-0-base -n
 # installation
 
 ```bash
-(dependent on os)
 wget https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda_12.2.0_535.54.03_linux.run
 sudo sh cuda_12.2.0_535.54.03_linux.run
 export PATH=/usr/local/cuda-12.2/bin:$PATH
