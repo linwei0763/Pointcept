@@ -49,7 +49,7 @@ sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-spunet-v1m1-0-base -n
 sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-spunet-v1m1-0-base -n semseg-spunet-v1m1-0-base -r true
 ```
 
-# houdeyun rtx4090 cuda12.2
+# houdeyun rtx4090 cuda12.2 image-gpu-pytorch_20240807
 
 # installation
 
