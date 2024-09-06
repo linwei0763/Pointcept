@@ -90,6 +90,8 @@ export CUDA_VISIBLE_DEVICES=0
 python pointcept/datasets/preprocessing/seg2tunnel/preprocess_seg2tunnel.py --dataset_root ../Seg2Tunnel/seg2tunnel --output_root ../Seg2Tunnel/seg2tunnel_pointcept_0.04
 sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-spunet-v1m1-0-base -n semseg-spunet-v1m1-0-base
 sh scripts/train.sh -p python -g 1 -d seg2tunnel -c semseg-spunet-v1m1-0-base -n semseg-spunet-v1m1-0-base -r true
+sh scripts/test.sh -p python -d seg2tunnel -n semseg-spunet-v1m1-0-base -w model_best
+
 ```
 
 # 

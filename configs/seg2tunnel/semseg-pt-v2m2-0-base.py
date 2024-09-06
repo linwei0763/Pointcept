@@ -156,6 +156,7 @@ data = dict(
                 ),
             ],
             aug_transform=[
+                [dict(type="RandomRotateTargetAngle", angle=[0], axis="z", center=[0, 0, 0], p=1)],
                 # [dict(type="RandomScale", scale=[0.9, 0.9])],
                 # [dict(type="RandomScale", scale=[0.95, 0.95])],
                 # [dict(type="RandomScale", scale=[1, 1])],
